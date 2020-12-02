@@ -1,0 +1,6 @@
+spring:  
+  application:
+    name: doc-service
+  profiles:
+    active:
+    - dev  
