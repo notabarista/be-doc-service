@@ -31,8 +31,7 @@ jobs:
          
       - name: Build with maven
         run: mvn dependency:tree clean install
-      - run: mkdir staging && cp target/*.jar staging
-      - uses: actions/upload-artifact@v2
-        with:
-          name: Package
-          path: staging
+      - name: Deploy artifacts
+        run: mvn -batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.CI_TOKEN }}
